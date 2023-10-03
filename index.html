@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+    
+        .form-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+    
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    
+        /* Set a specific width for phone and email inputs */
+        #phone,
+        #email {
+            width: calc(50% - 5px); /* Adjust margin as needed */
+        }
+    
+        select {
+            appearance: none;
+        }
+    
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    
+        #result {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    
+        #result h3 {
+            color: #333;
+        }
+    
+        p {
+            margin: 5px 0;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="form-container ">
+        <h2>Thông tin liên hệ</h2>
+        <form id="contact-form">
+            <div>
+                <label for="phone">Số điện thoại:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="province">Tỉnh / Thành phố:</label>
+                <select id="province" name="province" required>
+                    <option value="Ha Noi">Hà Nội</option>
+                    <option value="Ho Chi Minh">Hồ Chí Minh</option>
+                </select>
+            </div>
+            <div>
+                <label for="district">Quận / Huyện:</label>
+                <select id="district" name="district" required>
+                    <option value="Quan Dong Da">Quận Đống Đa</option>
+                    <option value="Quan Hoan Kiem">Quận Hoàn Kiếm</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <div id="result">
+            <h3>Kết quả:</h3>
+            <p id="submitted-phone"></p>
+            <p id="submitted-email"></p>
+            <p id="submitted-province"></p>
+            <p id="submitted-district"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const province = document.getElementById('province').value;
+            const district = document.getElementById('district').value;
+
+            document.getElementById('submitted-phone').textContent = `Số điện thoại: ${phone}`;
+            document.getElementById('submitted-email').textContent = `Email: ${email}`;
+            document.getElementById('submitted-province').textContent = `Tỉnh / Thành phố: ${province}`;
+            document.getElementById('submitted-district').textContent = `Quận / Huyện: ${district}`;
+
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
